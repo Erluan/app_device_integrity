@@ -1,5 +1,5 @@
 name: app_device_integrity
-description: "This plugin was created to make your app attestation more easy. It uses the Native Attestation Providers from Apple and Google, App Attest and Play Integrity respectively, to generate tokens to be decrypted by your Server to check if your app is being accessed by a reliable device."
+description: "This plugin simplifies app attestation by using Apple's App Attest and Google's Play Integrity to generate tokens for your Server to decrypt and verify reliable device access."
 version: 1.0.1
 homepage: https://bubotech.co
 
