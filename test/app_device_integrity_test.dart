@@ -9,7 +9,7 @@ class MockAppDeviceIntegrityPlatform
     implements AppDeviceIntegrityPlatform {
 
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+  Future<String?> getAttestationServiceSupport({required String challengeString, int? gcp}) => Future.value('UUID_RESPONSE');
 }
 
 void main() {
@@ -24,6 +24,6 @@ void main() {
     MockAppDeviceIntegrityPlatform fakePlatform = MockAppDeviceIntegrityPlatform();
     AppDeviceIntegrityPlatform.instance = fakePlatform;
 
-    expect(await appDeviceIntegrityPlugin.getPlatformVersion(), '42');
+    expect(await appDeviceIntegrityPlugin.getAttestationServiceSupport(challengeString: 'UUID_TEST'), '42');
   });
 }
