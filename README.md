@@ -1,6 +1,6 @@
 # App Device Integrity
 [![pub package](https://img.shields.io/pub/v/app_device_integrity)](https://pub.dev/packages/app_device_integrity)
-[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
+[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges)](./LICENSE)
 <hr>
 <hr>
 <a href="https://discord.gg/8GEp4dgM"><img src="https://img.shields.io/discord/765557403865186374.svg?logo=discord&color=blue" alt="Discord"></a>
