@@ -29,7 +29,7 @@ To be more "precise", when you link you GCP Project to your app in Google Play C
 It's recommended to create environmental variable with the project ID to maintain your app, and project, integrity.
 
 ### How To Implement
-After you import the plugin to your project, implement the token generation can get the tokens using the following method:
+After you import the plugin to your project, implement the token generation using the following steps:
 
 ```dart
 
@@ -51,6 +51,7 @@ if (Platform.isAndroid) {
       .getAttestationServiceSupport(challengeString: sessionId, gcp: gpc);  
 
   return;
+  
 }  
 
 tokenReceived = await _appAttestationPlugin  
