@@ -19,7 +19,7 @@ void main() {
     expect(initialPlatform, isInstanceOf<MethodChannelAppDeviceIntegrity>());
   });
 
-  test('getPlatformVersion', () async {
+  test('getAttestationServiceSupport', () async {
     AppDeviceIntegrity appDeviceIntegrityPlugin = AppDeviceIntegrity();
     MockAppDeviceIntegrityPlatform fakePlatform = MockAppDeviceIntegrityPlatform();
     AppDeviceIntegrityPlatform.instance = fakePlatform;

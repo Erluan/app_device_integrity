@@ -21,7 +21,7 @@ void main() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(channel, null);
   });
 
-  test('getPlatformVersion', () async {
+  test('getAttestationServiceSupport', () async {
     expect(await platform.getAttestationServiceSupport(challengeString: 'UUID_TEST'), 'UUID_RESPONSE');
   });
 }
