@@ -41,8 +41,8 @@ class _MyAppState extends State<MyApp> {
         });
         return;
       }
-      tokenReceived = await _appAttestationPlugin
-          .getAttestationServiceSupport(challengeString: sessionId);
+      tokenReceived = await _appAttestationPlugin.getAttestationServiceSupport(
+          challengeString: sessionId);
       setState(() {
         _tokenExample = tokenReceived;
       });

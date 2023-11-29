@@ -8,7 +8,8 @@ abstract class AppDeviceIntegrityPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static AppDeviceIntegrityPlatform _instance = MethodChannelAppDeviceIntegrity();
+  static AppDeviceIntegrityPlatform _instance =
+      MethodChannelAppDeviceIntegrity();
 
   /// The default instance of [AppAttestationPlatform] to use.
   ///

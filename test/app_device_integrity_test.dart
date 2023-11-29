@@ -7,13 +7,15 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockAppDeviceIntegrityPlatform
     with MockPlatformInterfaceMixin
     implements AppDeviceIntegrityPlatform {
-
   @override
-  Future<String?> getAttestationServiceSupport({required String challengeString, int? gcp}) => Future.value('UUID_RESPONSE');
+  Future<String?> getAttestationServiceSupport(
+          {required String challengeString, int? gcp}) =>
+      Future.value('UUID_RESPONSE');
 }
 
 void main() {
-  final AppDeviceIntegrityPlatform initialPlatform = AppDeviceIntegrityPlatform.instance;
+  final AppDeviceIntegrityPlatform initialPlatform =
+      AppDeviceIntegrityPlatform.instance;
 
   test('$MethodChannelAppDeviceIntegrity is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelAppDeviceIntegrity>());
@@ -21,9 +23,13 @@ void main() {
 
   test('getAttestationServiceSupport', () async {
     AppDeviceIntegrity appDeviceIntegrityPlugin = AppDeviceIntegrity();
-    MockAppDeviceIntegrityPlatform fakePlatform = MockAppDeviceIntegrityPlatform();
+    MockAppDeviceIntegrityPlatform fakePlatform =
+        MockAppDeviceIntegrityPlatform();
     AppDeviceIntegrityPlatform.instance = fakePlatform;
 
-    expect(await appDeviceIntegrityPlugin.getAttestationServiceSupport(challengeString: 'UUID_TEST'), '42');
+    expect(
+        await appDeviceIntegrityPlugin.getAttestationServiceSupport(
+            challengeString: 'UUID_TEST'),
+        '42');
   });
 }

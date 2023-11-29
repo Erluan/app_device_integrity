@@ -9,7 +9,8 @@ void main() {
   const MethodChannel channel = MethodChannel('app_device_integrity');
 
   setUp(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
       channel,
       (MethodCall methodCall) async {
         return '42';
@@ -18,10 +19,14 @@ void main() {
   });
 
   tearDown(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(channel, null);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, null);
   });
 
   test('getAttestationServiceSupport', () async {
-    expect(await platform.getAttestationServiceSupport(challengeString: 'UUID_TEST'), 'UUID_RESPONSE');
+    expect(
+        await platform.getAttestationServiceSupport(
+            challengeString: 'UUID_TEST'),
+        'UUID_RESPONSE');
   });
 }
