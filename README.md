@@ -3,7 +3,6 @@
 [![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges)](./LICENSE)
 <a href="https://discord.gg/8GEp4dgM"><img src="https://img.shields.io/discord/765557403865186374.svg?logo=discord&color=blue" alt="Discord"></a>
 
-<br>
 <a align="center" href="https://www.buymeacoffee.com/erluan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="50" width="183"></a>
 <hr>
 <hr>
