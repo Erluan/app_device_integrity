@@ -1,5 +1,5 @@
 # App Device Integrity
-![Build](https://github.com/Erluan/app_device_attest/workflows/Build/badge.svg)
+![Build](https://github.com/Erluan/app_device_integrity/workflows/Build/badge.svg)
 [![pub package]()](https://pub.dartlang.org/app_device_integrity)
 <a href="https://discord.gg/p4nzsMU3"><img src="https://img.shields.io/discord/765557403865186374.svg?logo=discord&color=blue" alt="Discord"></a>
 
