@@ -1,6 +1,5 @@
 # App Device Integrity
-![Build](https://github.com/Erluan/app_device_integrity/workflows/Build/badge.svg)
-[![pub package](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://pub.dev/packages/app_device_integrity)
+[![pub package](https://img.shields.io/pub/v/app_device_integrity)](https://pub.dev/packages/app_device_integrity)
 [![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
 <hr>
 <hr>
