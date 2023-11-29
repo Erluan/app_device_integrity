@@ -3,7 +3,7 @@
 [![pub package]()](https://pub.dartlang.org/app_device_integrity)
 <a href="https://discord.gg/8GEp4dgM"><img src="https://img.shields.io/discord/765557403865186374.svg?logo=discord&color=blue" alt="Discord"></a>
 
-This plugin was created to make your app attestation more easy. It uses the Native Attestation Providers from Apple and Google, App Attest and Play Integrity respectively, to generate tokens to be decrypted by your Server to check if your app is beeing accessed by a reliable device.
+This plugin was created to make your app attestation more easy. It uses the Native Attestation Providers from Apple and Google, App Attest and Play Integrity respectively, to generate tokens to be decrypted by your Server to check if your app is being accessed by a reliable device.
 
 <a align="center" href="https://www.buymeacoffee.com/erluan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="50" width="183"></a><b>
 

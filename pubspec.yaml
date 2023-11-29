@@ -1,5 +1,5 @@
 name: app_device_integrity
-description: "A new Flutter plugin project."
+description: "This plugin was created to make your app attestation more easy. It uses the Native Attestation Providers from Apple and Google, App Attest and Play Integrity respectively, to generate tokens to be decrypted by your Server to check if your app is being accessed by a reliable device."
 version: 1.0.0
 homepage: https://bubotech.co
 
