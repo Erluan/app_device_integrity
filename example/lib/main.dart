@@ -59,7 +59,11 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running token: $_tokenExample'),
+          child: GestureDetector(
+            onTap: () async {
+              await Clipboard.setData(ClipboardData(text: _tokenExample));
+            },
+              child: Text('Running token: $_tokenExample')),
         ),
       ),
     );

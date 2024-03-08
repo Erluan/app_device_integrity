@@ -44,7 +44,7 @@ final class AppDeviceIntegrity {
     }
     
     func keyIdentifier() -> String {
-        return ("🐝 Key Identifier: \(self.keyID ?? "Error in Key ID")")
+        return ("\(self.keyID ?? "Error in Key ID")")
     }
 
     // https://developer.apple.com/documentation/devicecheck/dcappattestservice/3573911-attestkey

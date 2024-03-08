@@ -41,7 +41,16 @@ public static func register(with registrar: FlutterPluginRegistrar) {
 
           if attest.preAttestation(){
               DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                  result(attest.attestationString)
+                  var attestation = [String : String] ()
+                  attestation["attestationString"] = attest.attestationString
+                  attestation["keyID"] = attest.keyIdentifier()
+
+                  let encoder = JSONEncoder()
+                  if let json = try? encoder.encode(attestation) {
+                      result(String(data: json, encoding: .utf8)!)
+                  }
+                  
+                  
               }
           } else {
               result(FlutterError(code: "-1", message: "iOS could not extract " +
