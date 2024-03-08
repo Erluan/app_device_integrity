@@ -1,7 +1,7 @@
 name: app_device_integrity
 description: "This plugin simplifies app attestation by using Apple's App Attest and Google's Play Integrity to generate tokens for your Server to decrypt and verify reliable device access."
-version: 1.0.4
-homepage: https://bubo-website.web.app
+version: 1.0.5
+homepage: https://bubotech.club
 
 environment:
   sdk: '>=3.2.0 <4.0.0'
