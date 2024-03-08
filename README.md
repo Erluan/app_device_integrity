@@ -61,7 +61,7 @@ return;
 ```
 
 **Server:**<br>
-I am very proud to provide you with an open-source service that you can Attest your implementations in server side.<br>
+I am very proud to provide you with an open-source service that you can [Attest your implementations in server side](https://github.com/Erluan/app_device_integrity_server).<br>
 It checks from which platform the token is sent and verifies the token, providing very important information about risks, enabling better decision-making to reinforce the security of your services.<br>
 Feel comfortable to fork it, or clone it, and customize it, according to your business demands.
 
