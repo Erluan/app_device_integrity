@@ -6,13 +6,11 @@ import Foundation
 final class AppDeviceIntegrity {
     let inputString: String
     var attestationString: String?
-    var error: String?
     private let keyName = "AppAttestKeyIdentifier"
     private let attestService = DCAppAttestService.shared
     private var keyID: String?
 
     init?(challengeString: String) {
-        print("init with challengeString", challengeString)
         self.inputString = challengeString
 
         guard attestService.isSupported else {
@@ -22,7 +20,6 @@ final class AppDeviceIntegrity {
     }
 
     func generateKeyAndAttest(completion: @escaping (Bool) -> Void) {
-        // Generate the key
         attestService.generateKey { [weak self] keyIdentifier, error in
             guard let self = self else { return }
 
@@ -39,8 +36,6 @@ final class AppDeviceIntegrity {
             }
 
             self.keyID = keyIdentifier
-            
-            // Proceed with pre-attestation after key generation
             self.preAttestation(completion: completion)
         }
     }
@@ -64,7 +59,6 @@ final class AppDeviceIntegrity {
             guard let self = self else { return }
 
             if let error = error {
-                self.error = error.localizedDescription
                 print("Attestation error: \(error.localizedDescription)")
                 completion(false)
                 return
