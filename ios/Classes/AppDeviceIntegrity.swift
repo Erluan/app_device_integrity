@@ -1,75 +1,78 @@
-import Foundation
-import DeviceCheck
 import CryptoKit
+import DeviceCheck
+import Foundation
 
 @available(iOS 14.0, *)
-
 final class AppDeviceIntegrity {
     let inputString: String
     var attestationString: String?
     private let keyName = "AppAttestKeyIdentifier"
     private let attestService = DCAppAttestService.shared
-    private let userDefaults = UserDefaults.standard
-    private var keyID: String? {
-        didSet
-        {
-            print("🐝 Key ID:", keyID!)
-        }
-    }
-    
+    private var keyID: String?
+
     init?(challengeString: String) {
         self.inputString = challengeString
-        
-        guard attestService.isSupported == true else {
-            print("[!] Attest service not available:")
+
+        guard attestService.isSupported else {
+            print("[!] Attest service not available")
             return nil
         }
-        
-        guard let id = userDefaults.object(forKey:keyName) as? String else {
-            attestService.generateKey { keyIdentifier, error in
-                
-                guard error == nil, keyIdentifier != nil else { return }
-                self.keyID = keyIdentifier
-                if self.keyID != nil {
-                    print("🐝 Generated key")
-                    self.userDefaults.set(self.keyID, forKey: self.keyName)
-                }
-                
-            }
-            return nil
-        }
-        
-        keyID = id
-        
     }
-    
+
+    func generateKeyAndAttest(completion: @escaping (Bool) -> Void) {
+        attestService.generateKey { [weak self] keyIdentifier, error in
+            guard let self = self else { return }
+
+            if let error = error {
+                print("Key generation error: \(error.localizedDescription)")
+                completion(false)
+                return
+            }
+
+            guard let keyIdentifier = keyIdentifier else {
+                print("Failed to generate key identifier")
+                completion(false)
+                return
+            }
+
+            self.keyID = keyIdentifier
+            self.preAttestation(completion: completion)
+        }
+    }
+
     func keyIdentifier() -> String {
         return ("\(self.keyID ?? "Error in Key ID")")
     }
 
-    // https://developer.apple.com/documentation/devicecheck/dcappattestservice/3573911-attestkey
-    // A SHA256 hash of a unique, single-use data block that embeds a challenge from your server.
+    // Pre-attestation process
+    private func preAttestation(completion: @escaping (Bool) -> Void) {
+        guard let keyID = self.keyID else {
+            print("No key ID available for attestation")
+            completion(false)
+            return
+        }
 
-    func preAttestation() -> Bool {
-        
-        let inputString = self.inputString
-        let challenge = Data(inputString.utf8)
+        let challenge = Data(self.inputString.utf8)
         let hash = Data(SHA256.hash(data: challenge))
-        
-        
-        print("🐝 Calling Apple servers")
-        attestService.attestKey(self.keyID!, clientDataHash: hash, completionHandler: { attestation, error in
-            guard let attestationObject = attestation else { return }
-            self.attestationString = attestation?.base64EncodedString()
-            let decodedData: Data? = Data(base64Encoded: attestationObject.base64EncodedData(), options: .ignoreUnknownCharacters)
-            guard let finalDecodedData = decodedData else { return }
-            
-            guard let decodedAttestation = String(data: finalDecodedData.base64EncodedData(), encoding: .utf8) else {
+
+        attestService.attestKey(keyID, clientDataHash: hash) { [weak self] attestation, error in
+            guard let self = self else { return }
+
+            if let error = error {
+                print("Attestation error: \(error.localizedDescription)")
+                completion(false)
                 return
             }
-            
-        })
-        return true
-    }
 
+            guard let attestationObject = attestation else {
+                print("No attestation object received")
+                completion(false)
+                return
+            }
+
+            self.attestationString = attestationObject.base64EncodedString()
+            print("Attestation successful")
+            completion(true)
+        }
+    }
 }
