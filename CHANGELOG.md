@@ -1,6 +1,5 @@
 ## 1.1.0
 
-* Adding MacOS Support
 * Updating Swift Implementation - contrib. [@Nebojsa92](https://github.com/Nebojsa92)
 * Added completion handlers where waiting is needed - contrib. [@Nebojsa92](https://github.com/Nebojsa92)
 * Added more meaningful errors - contrib. [@Nebojsa92](https://github.com/Nebojsa92)
