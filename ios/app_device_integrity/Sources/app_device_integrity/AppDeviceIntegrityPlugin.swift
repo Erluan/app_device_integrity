@@ -1,7 +1,6 @@
 import Flutter
 import UIKit
 
-@available(iOS 14.0, *)
 public class AppDeviceIntegrityPlugin: NSObject, FlutterPlugin {
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "app_attestation", binaryMessenger: registrar.messenger())
@@ -47,6 +46,36 @@ public class AppDeviceIntegrityPlugin: NSObject, FlutterPlugin {
                     } else {
                         // Attestation or key generation failed
                         result(FlutterError(code: "-5", message: "Attestation failed", details: nil))
+                    }
+                }
+            }
+
+        case "generateAssertion":
+            guard let args = call.arguments as? [String: Any],
+                let keyID = args["keyID"] as? String,
+                let clientData = args["clientData"] as? String
+            else {
+                result(FlutterError(code: "-3", message: "Invalid arguments", details: nil))
+                return
+            }
+
+            guard let deviceIntegrity = AppDeviceIntegrity(keyID: keyID) else {
+                result(FlutterError(code: "-4", message: "Failed to initialize AppDeviceIntegrity", details: nil))
+                return
+            }
+
+            deviceIntegrity.generateAssertion(clientData: clientData) { assertionString, error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        result(FlutterError(
+                            code: "-8",
+                            message: "Assertion generation failed: \(error.localizedDescription)",
+                            details: nil
+                        ))
+                    } else if let assertionString = assertionString {
+                        result(assertionString)
+                    } else {
+                        result(FlutterError(code: "-9", message: "Unknown assertion generation error", details: nil))
                     }
                 }
             }

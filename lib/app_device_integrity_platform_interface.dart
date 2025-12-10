@@ -2,7 +2,7 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'app_device_integrity_method_channel.dart';
 
-abstract class AppDeviceIntegrityPlatform extends PlatformInterface {
+abstract interface class AppDeviceIntegrityPlatform extends PlatformInterface {
   /// Constructs a AppAttestationPlatform.
   AppDeviceIntegrityPlatform() : super(token: _token);
 
@@ -24,8 +24,13 @@ abstract class AppDeviceIntegrityPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getAttestationServiceSupport(
-      {required String challengeString, int? gcp}) {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
+  Future<String?> getAttestationServiceSupport({
+    required String challengeString,
+    int? gcp,
+  });
+
+  Future<String?> generateAssertion({
+    required String keyID,
+    required String clientData,
+  });
 }
