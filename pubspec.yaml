@@ -1,11 +1,11 @@
 name: app_device_integrity
 description: "This plugin simplifies app attestation by using Apple's App Attest and Google's Play Integrity to generate tokens for your Server to decrypt and verify reliable device access."
-version: 1.1.0
+version: 1.2.0
 homepage: https://bubotech.club
 
 environment:
-  sdk: '>=3.2.0 <4.0.0'
-  flutter: '>=3.3.0'
+  sdk: '>=3.6.0 <4.0.0'
+  flutter: '>=3.27.0'
 
 dependencies:
   flutter:
