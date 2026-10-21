@@ -1,3 +1,7 @@
+## 1.1.1
+
+* Android: Activity detach and config-change callbacks no longer throw `NotImplementedError`. Attestation keeps using the application context.
+
 ## 1.1.0
 
 * Updating Swift Implementation - contrib. [@Nebojsa92](https://github.com/Nebojsa92)

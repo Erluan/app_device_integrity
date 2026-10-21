@@ -50,11 +50,12 @@ class AppDeviceIntegrityPlugin: FlutterPlugin, MethodCallHandler, ActivityAware 
   }
 
   override fun onDetachedFromActivity() {
-    TODO("Not yet implemented")
+    // TODO
   }
 
+  @Suppress("UNUSED_PARAMETER")
   override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-    TODO("Not yet implemented")
+    // TODO
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
@@ -62,6 +63,6 @@ class AppDeviceIntegrityPlugin: FlutterPlugin, MethodCallHandler, ActivityAware 
   }
 
   override fun onDetachedFromActivityForConfigChanges() {
-    TODO("Not yet implemented")
+    // TODO
   }
 }
